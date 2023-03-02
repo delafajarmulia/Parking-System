@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.viewMasterMemberBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.memberBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.viewMasterMemberBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -57,9 +58,8 @@
             this.radMale = new System.Windows.Forms.RadioButton();
             this.radFemale = new System.Windows.Forms.RadioButton();
             this.cmbMemberType = new System.Windows.Forms.ComboBox();
-            this.viewMasterMemberBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MembershipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdMembership = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,13 +68,13 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -94,8 +94,8 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Type,
             this.MembershipName,
+            this.IdMembership,
             this.IdMember,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
@@ -111,6 +111,10 @@
             this.dataGridView1.Size = new System.Drawing.Size(734, 188);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // viewMasterMemberBindingSource2
+            // 
+            this.viewMasterMemberBindingSource2.DataSource = typeof(ParkingSystem.Model.ViewMasterMember);
             // 
             // memberBindingSource
             // 
@@ -311,18 +315,6 @@
             this.cmbMemberType.Size = new System.Drawing.Size(253, 28);
             this.cmbMemberType.TabIndex = 23;
             // 
-            // viewMasterMemberBindingSource2
-            // 
-            this.viewMasterMemberBindingSource2.DataSource = typeof(ParkingSystem.Model.ViewMasterMember);
-            // 
-            // Type
-            // 
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "Type";
-            this.Type.MinimumWidth = 6;
-            this.Type.Name = "Type";
-            this.Type.Width = 125;
-            // 
             // MembershipName
             // 
             this.MembershipName.DataPropertyName = "MembershipName";
@@ -330,6 +322,14 @@
             this.MembershipName.MinimumWidth = 6;
             this.MembershipName.Name = "MembershipName";
             this.MembershipName.Width = 125;
+            // 
+            // IdMembership
+            // 
+            this.IdMembership.DataPropertyName = "TypeId";
+            this.IdMembership.HeaderText = "IdMembership";
+            this.IdMembership.MinimumWidth = 6;
+            this.IdMembership.Name = "IdMembership";
+            this.IdMembership.Width = 125;
             // 
             // IdMember
             // 
@@ -417,13 +417,13 @@
             this.Name = "MasterMember";
             this.Text = "MasterMember";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,8 +466,9 @@
         private BindingSource viewMasterMemberBindingSource1;
         private BindingSource memberBindingSource2;
         private BindingSource memberBindingSource3;
-        private DataGridViewTextBoxColumn Type;
+        private BindingSource viewMasterMemberBindingSource2;
         private DataGridViewTextBoxColumn MembershipName;
+        private DataGridViewTextBoxColumn IdMembership;
         private DataGridViewTextBoxColumn IdMember;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -475,6 +476,5 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private BindingSource viewMasterMemberBindingSource2;
     }
 }

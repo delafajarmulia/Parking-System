@@ -29,7 +29,7 @@ namespace ParkingSystem
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ViewMasterMember>(c =>
             {
-                c.HasNoKey();
+                c.HasKey(x => x.IdMember);
                 c.ToView("ViewMasterMember");
             });
         }
