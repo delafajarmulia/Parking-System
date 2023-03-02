@@ -20,7 +20,5 @@ namespace ParkingSystem.Model
         //public string Type { get; set; }
         public string MembershipName { get; set; }
 
-        //public List<Member> Memberships { get; set;} = new List<Member>();
-        //public List<MembershipType> MemberTypes { get; set; } = new List<MembershipType>();
     }
 }

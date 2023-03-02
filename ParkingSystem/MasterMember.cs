@@ -27,10 +27,6 @@ namespace ParkingSystem
         private string? operation;
         private int? selectedMemberId;
 
-        private DataGridView dgv = new DataGridView();
-        private BindingSource bindingSource1 = new BindingSource();
-        private SqlDataAdapter dataAdapter = new SqlDataAdapter();
-
         public MasterMember()
         {
             InitializeComponent();
@@ -157,6 +153,7 @@ namespace ParkingSystem
         }
 
         private async void actionInsert()
+
         {
             // cek dulu (validasi)
             bool cPhoneNum = int.TryParse(txtPhoneNum.Text, out var phoneNum);
@@ -200,6 +197,7 @@ namespace ParkingSystem
 
                 _context.Members.Add(newMember);
                 await _context.SaveChangesAsync();
+                _context.Members.Load();
                 dataGridView1.Refresh();
             }
 
@@ -214,6 +212,7 @@ namespace ParkingSystem
                 _context.Members.Remove(member);
                 await _context.SaveChangesAsync();
                 selectedMemberId = null;
+                _context.Members.Load();
                 dataGridView1.Refresh();
             } else
             {
@@ -225,12 +224,14 @@ namespace ParkingSystem
         {
             if (selectedMemberId != null)
             {
+                // get membership type
                 string textTypeid = cmbMemberType.SelectedItem.ToString();
                 int memTypeId = int.Parse(cmbMemberType.SelectedValue.ToString());
                 MembershipType? memType = await _context.MemberShipTypes
                     .Where(m => m.Id == memTypeId)
                     .FirstAsync();
 
+                // get member dan simpan ke db
                 var member = await _context.Members
                                 .Where(m => m.Id == selectedMemberId) 
                                 .FirstAsync();
@@ -250,6 +251,7 @@ namespace ParkingSystem
                 }
                 _context.Members.Update(member);
                 await _context.SaveChangesAsync();
+                _context.Members.Load();
                 dataGridView1.Refresh();
             } else
             {

@@ -22,27 +22,30 @@ namespace ParkingSystem
         public DbSet<Employee> Employees { get; set; }
         public DbSet<MembershipType> MemberShipTypes { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<VehicleType> VehicleTypes { get; set; }
+
+        // VIEW //
         public DbSet<ViewMasterMember> ViewMasterMembers { get; set; }
+        public DbSet<ViewMasterVehicle> ViewMasterVehicles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<ViewMasterMember>(c =>
             {
                 c.HasKey(x => x.IdMember);
                 c.ToView("ViewMasterMember");
             });
-        }
-        //public DbQuery<ViewMasterMember> ViewMasterMembers { get; set; }
-        //public System.Data.SqlClient.SqlCommand SelectCommand { get; set; }
 
-        /*public IQueryable<ViewMasterMember> viewMasterMembers
-        {
-            get
+            modelBuilder.Entity<ViewMasterVehicle>(c =>
             {
-                return this.Database.SqlQuery<ViewMasterMember>("select * from dbo.ViewMasterMember");
-            }
-        }*/
+                c.HasKey(x => x.VehicleId);
+                c.ToView("ViewMasterVehicle");
+            });
+        }
+
     }
 
 }

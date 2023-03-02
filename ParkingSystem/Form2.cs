@@ -29,5 +29,11 @@ namespace ParkingSystem
             MasterMember mastermember = new MasterMember();
             mastermember.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MasterVehicle mastervehicle = new MasterVehicle();
+            mastervehicle.ShowDialog();
+        }
     }
 }
