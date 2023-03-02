@@ -24,6 +24,8 @@ namespace ParkingSystem
         public DbSet<Member> Members { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set; }
+        public DbSet<HourlyRate> Hours { get; set; }
+        public DbSet<ParkingData> ParkingData { get; set; }
 
         // VIEW //
         public DbSet<ViewMasterMember> ViewMasterMembers { get; set; }
