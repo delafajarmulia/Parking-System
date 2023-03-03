@@ -13,6 +13,7 @@ namespace ParkingSystem
 {
     public partial class Form2 : Form
     {
+        public string employeeName;
         public Form2()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace ParkingSystem
         {
             lblSayHay.Text = $"Welcome, {name}";
             lblDate.Text = DateTime.Now.ToString("[ddd] dd-MM-yyyy, hh:mm:ss");
+            employeeName = name;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,6 +41,7 @@ namespace ParkingSystem
         private void button3_Click(object sender, EventArgs e)
         {
             Payment payment = new Payment();
+            payment.HelloEmployee(employeeName);
             payment.ShowDialog();
         }
     }

@@ -11,7 +11,7 @@ namespace ParkingSystem
         {
             InitializeComponent();
 
-            _context= new DataContext();
+            _context = new DataContext();
             _context.Database.EnsureCreated();
         }
 
@@ -20,7 +20,7 @@ namespace ParkingSystem
         {
             Employee? employee = await _context.Employees
                 .Where(c => c.Id == int.Parse(txtId.Text))
-                .FirstAsync();
+                .FirstOrDefaultAsync();
 
             if (employee.Password != txtPw.Text)
             {
@@ -32,7 +32,7 @@ namespace ParkingSystem
                 frm2.SayHello(employee.Name);
                 frm2.ShowDialog();
             }
-                
+
         }
     }
 }

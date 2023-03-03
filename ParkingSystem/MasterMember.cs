@@ -57,6 +57,18 @@ namespace ParkingSystem
             _context= null;
         }
 
+        private void EnabledTrue()
+        {
+            txtName.Enabled = true;
+            txtEmail.Enabled = true;
+            txtPhoneNum.Enabled = true;
+            RTAddress.Enabled = true;
+            txtBirthDay.Enabled = true;
+            radMale.Enabled = true;
+            radFemale.Enabled = true;
+            cmbMemberType.Enabled = true;
+        }
+
         private void btnInsert_Click(object sender, EventArgs e)
         {
             txtName.Text = "";
@@ -68,14 +80,7 @@ namespace ParkingSystem
             radFemale.Checked = false;
             cmbMemberType.Text = "";
 
-            txtName.Enabled = true;
-            txtEmail.Enabled = true;
-            txtPhoneNum.Enabled = true;
-            RTAddress.Enabled = true;
-            txtBirthDay.Enabled = true;
-            radMale.Enabled = true;
-            radFemale.Enabled = true;
-            cmbMemberType.Enabled = true;
+            EnabledTrue();
 
             _context.MemberShipTypes.Load();
             var data = _context.MemberShipTypes.Local.ToList();
@@ -86,7 +91,7 @@ namespace ParkingSystem
             operation = "insert";
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             operation = "delete";
         }
@@ -102,28 +107,14 @@ namespace ParkingSystem
             radFemale.Checked = false;
             cmbMemberType.Text = "";
 
-            txtName.Enabled = true;
-            txtEmail.Enabled = true;
-            txtPhoneNum.Enabled = true;
-            RTAddress.Enabled = true;
-            txtBirthDay.Enabled = true;
-            radMale.Enabled = true;
-            radFemale.Enabled = true;
-            cmbMemberType.Enabled = true;
+            EnabledTrue();
 
             operation = null;
         }
 
-        private async void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            txtName.Enabled = true;
-            txtEmail.Enabled = true;
-            txtPhoneNum.Enabled = true;
-            RTAddress.Enabled = true;
-            txtBirthDay.Enabled = true;
-            radMale.Enabled = true;
-            radFemale.Enabled = true;
-            cmbMemberType.Enabled = true;
+            EnabledTrue();
 
             _context.MemberShipTypes.Load();
             var data = _context.MemberShipTypes.Local.ToList();
@@ -153,13 +144,12 @@ namespace ParkingSystem
         }
 
         private async void actionInsert()
-
         {
             // cek dulu (validasi)
             bool cPhoneNum = int.TryParse(txtPhoneNum.Text, out var phoneNum);
             bool cDateBirth = int.TryParse(txtBirthDay.Text, out var dateBirth);
 
-            if ( !cPhoneNum || !cDateBirth)
+            if (!cPhoneNum || !cDateBirth)
             {
                 MessageBox.Show("Data yang Anda Masukkan tidak sesuai");
             } 
@@ -258,18 +248,12 @@ namespace ParkingSystem
                 MessageBox.Show("Member yang ingin anda update tidak ada dalam database");
             }
         }
-        private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
             DataGridViewRow row = dataGridView1.Rows[index];
             var selectedMember = (ViewMasterMember)viewMasterMemberBindingSource2.List[index];
             selectedMemberId = selectedMember.IdMember;
-
-            _context.MemberShipTypes.Load();
-            var data = _context.MemberShipTypes.Local.ToList();
-            cmbMemberType.DisplayMember = "Name";
-            cmbMemberType.ValueMember = "Id";
-            cmbMemberType.DataSource = data;
 
             txtName.Text = row.Cells[3].Value.ToString();
             txtEmail.Text = row.Cells[4].Value.ToString();

@@ -71,6 +71,14 @@ namespace ParkingSystem
             _context= null;
         }
 
+        private void EnabledTrue()
+        {
+            txtOwner.Enabled = true;
+            cmbVehicleType.Enabled = true;
+            RTNote.Enabled = true;
+            txtLicensePlate.Enabled = true;
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
@@ -87,7 +95,6 @@ namespace ParkingSystem
             txtOwner.Text = "["+ row.Cells[3].Value.ToString() +"] ["+ row.Cells[4].Value.ToString() + "]";
             txtLicensePlate.Text = row.Cells[5].Value.ToString();
             RTNote.Text = row.Cells[6].Value.ToString();
-
             ownerName = row.Cells[4].Value.ToString();
 
             txtOwner.Enabled = false;
@@ -98,10 +105,7 @@ namespace ParkingSystem
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            txtOwner.Enabled = true;
-            cmbVehicleType.Enabled = true;
-            RTNote.Enabled = true;
-            txtLicensePlate.Enabled = true;
+            EnabledTrue();
 
             txtOwner.Text = "";
             _context.VehicleTypes.Load();
@@ -117,10 +121,7 @@ namespace ParkingSystem
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            txtOwner.Enabled = true;
-            cmbVehicleType.Enabled = true;
-            RTNote.Enabled = true;
-            txtLicensePlate.Enabled = true;
+            EnabledTrue();
 
             txtOwner.Text = ownerName;
 
@@ -139,10 +140,7 @@ namespace ParkingSystem
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            txtOwner.Enabled = true;
-            cmbVehicleType.Enabled = true;
-            RTNote.Enabled = true;
-            txtLicensePlate.Enabled = true;
+            EnabledTrue();
 
             txtOwner.Text = "";
             _context.VehicleTypes.Load();
