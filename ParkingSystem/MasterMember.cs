@@ -69,6 +69,15 @@ namespace ParkingSystem
             cmbMemberType.Enabled = true;
         }
 
+        private void SelectMemType()
+        {
+            _context.MemberShipTypes.Load();
+            var data = _context.MemberShipTypes.Local.ToList();
+            cmbMemberType.DisplayMember = "Name";
+            cmbMemberType.ValueMember = "Id";
+            cmbMemberType.DataSource = data;
+        }
+
         private void btnInsert_Click(object sender, EventArgs e)
         {
             txtName.Text = "";
@@ -81,12 +90,7 @@ namespace ParkingSystem
             cmbMemberType.Text = "";
 
             EnabledTrue();
-
-            _context.MemberShipTypes.Load();
-            var data = _context.MemberShipTypes.Local.ToList();
-            cmbMemberType.DisplayMember = "Name";
-            cmbMemberType.ValueMember = "Id";
-            cmbMemberType.DataSource = data;
+            SelectMemType();
 
             operation = "insert";
         }
@@ -115,12 +119,7 @@ namespace ParkingSystem
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             EnabledTrue();
-
-            _context.MemberShipTypes.Load();
-            var data = _context.MemberShipTypes.Local.ToList();
-            cmbMemberType.DisplayMember = "Name";
-            cmbMemberType.ValueMember = "Id";
-            cmbMemberType.DataSource = data;
+            SelectMemType();
 
             operation = "update";
         }
