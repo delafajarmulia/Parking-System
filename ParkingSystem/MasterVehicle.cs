@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.AccessControl;
 
 namespace ParkingSystem
 {
@@ -22,6 +23,7 @@ namespace ParkingSystem
         private int? selectedVehicleId;
         private string? operation;
         private string? ownerName;
+        private int? memIdSearch;
 
         public MasterVehicle()
         {
@@ -41,17 +43,92 @@ namespace ParkingSystem
             viewMasterVehicleBindingSource.DataSource = _context.ViewMasterVehicles.Local.ToList();
 
             InitiateAutoComplete();
+            cmbSeacrh.Items.Add("Owner name");
+            cmbSeacrh.Items.Add("License plate");
         }
 
-        private void Search()
+        private void AutoCompleteInSearch_LicensePlate()
         {
-            _context.Members.Load();
-            var data = _context.Members.Local.ToList();
-            cmbSeacrh.DisplayMember = "Name";
-            cmbSeacrh.ValueMember = "Id";
-            cmbSeacrh.DataSource = data;
+            var plateArray = _context.Vehicles.Local.Select(p => p.LicensePlate).ToArray();
+            AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
+            autoCompleteStringCollection.AddRange(plateArray);
+            txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtSearch.AutoCompleteCustomSource = autoCompleteStringCollection;
+        }
 
-            dataGridView1.DataSource = data;
+        private void AutoCompleteInSearch_OwnerName()
+        {
+            var memberArray = _context.Members.Local.Select(p => p.Name).ToArray();
+            AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
+            autoCompleteStringCollection.AddRange(memberArray);
+            txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtSearch.AutoCompleteCustomSource = autoCompleteStringCollection;
+        }
+
+        private async void Search(object sender, EventArgs e)
+        {
+            if (cmbSeacrh.Text == "License plate")
+            {
+                AutoCompleteInSearch_LicensePlate();
+
+                _context.ViewMasterVehicles.Load();
+                string licensePlate = txtSearch.Text;
+                List<ViewMasterVehicle>? viewVehicle = await _context.ViewMasterVehicles
+                                    .Where(m => m.LicensePlate == licensePlate)
+                                    .ToListAsync();
+
+                viewMasterVehicleBindingSource.DataSource = viewVehicle.ToList();
+                dataGridView1.Refresh();
+            }
+            else if (cmbSeacrh.Text == "Owner name")
+            {
+                AutoCompleteInSearch_OwnerName();
+
+                _context.ViewMasterVehicles.Load();
+                string ownerName = txtSearch.Text;
+                List<ViewMasterVehicle>? viewVehicle = await _context.ViewMasterVehicles
+                                            .Where(o => o.MemberName == ownerName)
+                                            .ToListAsync();
+
+                viewMasterVehicleBindingSource.DataSource = viewVehicle.ToList();
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private async void txtSearch_LeaveFocus(object sender, EventArgs e)
+        {
+            if (cmbSeacrh.Text == "License plate")
+            {
+                _context.ViewMasterVehicles.Load();
+                string licensePlate = txtSearch.Text;
+                List<ViewMasterVehicle>? viewVehicle = await _context.ViewMasterVehicles
+                                    .Where(m => m.LicensePlate == licensePlate)
+                                    .ToListAsync();
+
+                viewMasterVehicleBindingSource.DataSource = viewVehicle.ToList();
+                dataGridView1.Refresh();
+            }
+            else if (cmbSeacrh.Text == "Owner name")
+            {
+                _context.ViewMasterVehicles.Load();
+                string ownerName = txtSearch.Text;
+                List<ViewMasterVehicle>? viewVehicle = await _context.ViewMasterVehicles
+                                            .Where(o => o.MemberName == ownerName)
+                                            .ToListAsync();
+
+                viewMasterVehicleBindingSource.DataSource = viewVehicle.ToList();
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void InitiateAutoComplete()
@@ -68,7 +145,7 @@ namespace ParkingSystem
         {
             base.OnClosed(e);
             _context.Dispose();
-            _context= null;
+            _context = null;
         }
 
         private void EnabledTrue()
@@ -79,23 +156,34 @@ namespace ParkingSystem
             txtLicensePlate.Enabled = true;
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
             DataGridViewRow row = dataGridView1.Rows[index];
             var selectedVehicle = (ViewMasterVehicle)viewMasterVehicleBindingSource.List[index];
             selectedVehicleId = selectedVehicle.VehicleId;
 
-            _context.VehicleTypes.Load();
-            var data = _context.VehicleTypes.Local.ToList();
-            cmbVehicleType.DisplayMember = "Name";
-            cmbVehicleType.ValueMember = "Id";
-            cmbVehicleType.DataSource = data;
-
-            txtOwner.Text = "["+ row.Cells[3].Value.ToString() +"] ["+ row.Cells[4].Value.ToString() + "]";
+            txtOwner.Text = "[" + row.Cells[3].Value.ToString() + "] [" + row.Cells[4].Value.ToString() + "]";
             txtLicensePlate.Text = row.Cells[5].Value.ToString();
             RTNote.Text = row.Cells[6].Value.ToString();
             ownerName = row.Cells[4].Value.ToString();
+            cmbVehicleType.Text = row.Cells[2].Value.ToString();
+
+            var created = row.Cells[7].Value;
+            var updated = row.Cells[8].Value;
+
+            if (updated != null)
+            {
+                lblModified.Text = "This record is last modifed at " + updated;
+            }
+            else if (created != null)
+            {
+                lblModified.Text = "This record is created at " + created;
+            }
+            else if (updated == null && created == null)
+            {
+                lblModified.Text = "";
+            }
 
             txtOwner.Enabled = false;
             cmbVehicleType.Enabled = false;
@@ -169,8 +257,9 @@ namespace ParkingSystem
         {
             if (txtLicensePlate.Text == "" || txtOwner.Text == "" || cmbVehicleType.Text == "" || RTNote.Text == "")
             {
-                MessageBox.Show("Anda harus mengisi data dengan lengkap");
-            } else
+                MessageBox.Show("Please fill all the fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
                 // ambil vehicle type
                 string vehicleType = cmbVehicleType.SelectedItem.ToString();
@@ -184,15 +273,18 @@ namespace ParkingSystem
 
                 // simpen ke db
                 Vehicle newVehicle = new Vehicle();
-                
+
                 newVehicle.VehicleTypeId = vehTypeId;
                 newVehicle.Notes = RTNote.Text;
                 newVehicle.LicensePlate = txtLicensePlate.Text;
                 newVehicle.MemberId = memberId;
+                newVehicle.CreatedAt = DateTime.Now;
 
                 _context.Vehicles.Add(newVehicle);
                 await _context.SaveChangesAsync();
+                _context.Vehicles.Load();
                 dataGridView1.Refresh();
+                MessageBox.Show("Successfully inserted new vehicle data with ID : " + newVehicle.Id, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -218,13 +310,17 @@ namespace ParkingSystem
                 vehicle.Notes = RTNote.Text;
                 vehicle.MemberId = memberId;
                 vehicle.LicensePlate = txtLicensePlate.Text;
+                vehicle.LastUpdatedAt = DateTime.Now;
 
                 _context.Vehicles.Update(vehicle);
                 await _context.SaveChangesAsync();
-                dataGridView1 .Refresh();
-            } else
+                _context.Vehicles.Load();
+                dataGridView1.Refresh();
+                MessageBox.Show("Successfully updated new vehicle data with ID : " + vehicle.Id, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
             {
-                MessageBox.Show("Vehicle yg ingin anda update unavaible");
+                MessageBox.Show("the data does not exist in the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -233,14 +329,23 @@ namespace ParkingSystem
         {
             if (selectedVehicleId != null)
             {
-                var vehicle = await _context.Vehicles.Where(x => x.Id == selectedVehicleId).FirstAsync();
-                _context.Vehicles.Remove(vehicle);
-                await _context.SaveChangesAsync();
-                selectedVehicleId = null;
-                dataGridView1.Refresh();
-            } else
+                if (MessageBox.Show("Are you sure you want to delete this data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    var vehicle = await _context.Vehicles.Where(x => x.Id == selectedVehicleId).FirstAsync();
+                    _context.Vehicles.Remove(vehicle);
+                    await _context.SaveChangesAsync();
+                    selectedVehicleId = null;
+                    _context.Vehicles.Load();
+                    dataGridView1.Refresh();
+                }
+            }
+            else
             {
-                MessageBox.Show("Data yang ingin anda hapus tidak tersedia di database");
+                MessageBox.Show("The data you want to delete is not available in the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -249,27 +354,16 @@ namespace ParkingSystem
             switch (operation)
             {
                 case "Insert":
-                        actionInsert();
+                    actionInsert();
                     break;
                 case "Update":
-                        actionUpdate();
+                    actionUpdate();
                     break;
                 case "Delete":
-                        actionDelete();
+                    actionDelete();
                     break;
                 default: break;
             }
-        }
-
-        private void cmbSeacrh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _context.Members.Load();
-            var data = _context.Members.Local.ToList();
-            cmbSeacrh.DisplayMember = "Name";
-            cmbSeacrh.ValueMember = "Id";
-            cmbSeacrh.DataSource = data;
-
-            dataGridView1.DataSource = data;
         }
     }
 }

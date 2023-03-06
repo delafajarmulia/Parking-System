@@ -28,405 +28,432 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.viewMasterMemberBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.memberBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.viewMasterMemberBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.memberBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.viewMasterMemberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.memberBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPhoneNum = new System.Windows.Forms.TextBox();
-            this.txtBirthDay = new System.Windows.Forms.TextBox();
-            this.RTAddress = new System.Windows.Forms.RichTextBox();
-            this.btnInsert = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.radMale = new System.Windows.Forms.RadioButton();
-            this.radFemale = new System.Windows.Forms.RadioButton();
-            this.cmbMemberType = new System.Windows.Forms.ComboBox();
-            this.MembershipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdMembership = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource1)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            MembershipName = new DataGridViewTextBoxColumn();
+            IdMembership = new DataGridViewTextBoxColumn();
+            IdMember = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            CreatedAt = new DataGridViewTextBoxColumn();
+            LastUpdatedAt = new DataGridViewTextBoxColumn();
+            DeletedAt = new DataGridViewTextBoxColumn();
+            viewMasterMemberBindingSource2 = new BindingSource(components);
+            memberBindingSource = new BindingSource(components);
+            memberBindingSource3 = new BindingSource(components);
+            viewMasterMemberBindingSource1 = new BindingSource(components);
+            memberBindingSource2 = new BindingSource(components);
+            viewMasterMemberBindingSource = new BindingSource(components);
+            memberBindingSource1 = new BindingSource(components);
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            txtName = new TextBox();
+            txtEmail = new TextBox();
+            txtPhoneNum = new TextBox();
+            txtBirthDay = new TextBox();
+            RTAddress = new RichTextBox();
+            btnInsert = new Button();
+            btnDelete = new Button();
+            btnCancel = new Button();
+            btnSubmit = new Button();
+            btnUpdate = new Button();
+            radMale = new RadioButton();
+            radFemale = new RadioButton();
+            cmbMemberType = new ComboBox();
+            lblModifed = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)viewMasterMemberBindingSource2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)viewMasterMemberBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)viewMasterMemberBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource1).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(348, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "MEMBER";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(348, 23);
+            label1.Name = "label1";
+            label1.Size = new Size(98, 28);
+            label1.TabIndex = 0;
+            label1.Text = "MEMBER";
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MembershipName,
-            this.IdMembership,
-            this.IdMember,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.dataGridView1.DataSource = this.viewMasterMemberBindingSource2;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 54);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(734, 188);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // viewMasterMemberBindingSource2
-            // 
-            this.viewMasterMemberBindingSource2.DataSource = typeof(ParkingSystem.Model.ViewMasterMember);
-            // 
-            // memberBindingSource
-            // 
-            this.memberBindingSource.DataSource = typeof(ParkingSystem.Model.Member);
-            // 
-            // memberBindingSource3
-            // 
-            this.memberBindingSource3.DataSource = typeof(ParkingSystem.Model.Member);
-            // 
-            // viewMasterMemberBindingSource1
-            // 
-            this.viewMasterMemberBindingSource1.DataSource = typeof(ParkingSystem.Model.ViewMasterMember);
-            // 
-            // memberBindingSource2
-            // 
-            this.memberBindingSource2.DataSource = typeof(ParkingSystem.Model.Member);
-            // 
-            // memberBindingSource1
-            // 
-            this.memberBindingSource1.DataSource = typeof(ParkingSystem.Model.Member);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 276);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Name";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 310);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Membership Type";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 344);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Email";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 373);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Phone Number";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 403);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Address";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(36, 520);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 20);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Gender";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(36, 490);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(96, 20);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Date Of Birth";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(193, 269);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(253, 27);
-            this.txtName.TabIndex = 9;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(193, 337);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(253, 27);
-            this.txtEmail.TabIndex = 11;
-            // 
-            // txtPhoneNum
-            // 
-            this.txtPhoneNum.Location = new System.Drawing.Point(193, 370);
-            this.txtPhoneNum.Name = "txtPhoneNum";
-            this.txtPhoneNum.Size = new System.Drawing.Size(253, 27);
-            this.txtPhoneNum.TabIndex = 12;
-            // 
-            // txtBirthDay
-            // 
-            this.txtBirthDay.Location = new System.Drawing.Point(193, 483);
-            this.txtBirthDay.Name = "txtBirthDay";
-            this.txtBirthDay.Size = new System.Drawing.Size(253, 27);
-            this.txtBirthDay.TabIndex = 13;
-            // 
-            // RTAddress
-            // 
-            this.RTAddress.Location = new System.Drawing.Point(193, 403);
-            this.RTAddress.Name = "RTAddress";
-            this.RTAddress.Size = new System.Drawing.Size(253, 65);
-            this.RTAddress.TabIndex = 15;
-            this.RTAddress.Text = "";
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.Location = new System.Drawing.Point(492, 306);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(105, 42);
-            this.btnInsert.TabIndex = 16;
-            this.btnInsert.Text = "INSERT";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(492, 475);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(105, 42);
-            this.btnDelete.TabIndex = 17;
-            this.btnDelete.Text = "DELETE";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(631, 438);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(105, 42);
-            this.btnCancel.TabIndex = 18;
-            this.btnCancel.Text = "CANCEL";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(631, 337);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(105, 42);
-            this.btnSubmit.TabIndex = 19;
-            this.btnSubmit.Text = "SUBMIT";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(492, 392);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(105, 42);
-            this.btnUpdate.TabIndex = 20;
-            this.btnUpdate.Text = "UPDATE";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // radMale
-            // 
-            this.radMale.AutoSize = true;
-            this.radMale.Location = new System.Drawing.Point(193, 520);
-            this.radMale.Name = "radMale";
-            this.radMale.Size = new System.Drawing.Size(63, 24);
-            this.radMale.TabIndex = 21;
-            this.radMale.TabStop = true;
-            this.radMale.Text = "Male";
-            this.radMale.UseVisualStyleBackColor = true;
-            // 
-            // radFemale
-            // 
-            this.radFemale.AutoSize = true;
-            this.radFemale.Location = new System.Drawing.Point(329, 518);
-            this.radFemale.Name = "radFemale";
-            this.radFemale.Size = new System.Drawing.Size(78, 24);
-            this.radFemale.TabIndex = 22;
-            this.radFemale.TabStop = true;
-            this.radFemale.Text = "Female";
-            this.radFemale.UseVisualStyleBackColor = true;
-            // 
-            // cmbMemberType
-            // 
-            this.cmbMemberType.FormattingEnabled = true;
-            this.cmbMemberType.Location = new System.Drawing.Point(193, 302);
-            this.cmbMemberType.Name = "cmbMemberType";
-            this.cmbMemberType.Size = new System.Drawing.Size(253, 28);
-            this.cmbMemberType.TabIndex = 23;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MembershipName, IdMembership, IdMember, dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, CreatedAt, LastUpdatedAt, DeletedAt });
+            dataGridView1.DataSource = viewMasterMemberBindingSource2;
+            dataGridView1.Location = new Point(31, 54);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(734, 188);
+            dataGridView1.TabIndex = 1;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // MembershipName
             // 
-            this.MembershipName.DataPropertyName = "MembershipName";
-            this.MembershipName.HeaderText = "MembershipName";
-            this.MembershipName.MinimumWidth = 6;
-            this.MembershipName.Name = "MembershipName";
-            this.MembershipName.Width = 125;
+            MembershipName.DataPropertyName = "MembershipName";
+            MembershipName.HeaderText = "MembershipName";
+            MembershipName.MinimumWidth = 6;
+            MembershipName.Name = "MembershipName";
+            MembershipName.Width = 125;
             // 
             // IdMembership
             // 
-            this.IdMembership.DataPropertyName = "TypeId";
-            this.IdMembership.HeaderText = "IdMembership";
-            this.IdMembership.MinimumWidth = 6;
-            this.IdMembership.Name = "IdMembership";
-            this.IdMembership.Width = 125;
+            IdMembership.DataPropertyName = "TypeId";
+            IdMembership.HeaderText = "IdMembership";
+            IdMembership.MinimumWidth = 6;
+            IdMembership.Name = "IdMembership";
+            IdMembership.Width = 125;
             // 
             // IdMember
             // 
-            this.IdMember.DataPropertyName = "IdMember";
-            this.IdMember.HeaderText = "IdMember";
-            this.IdMember.MinimumWidth = 6;
-            this.IdMember.Name = "IdMember";
-            this.IdMember.Width = 125;
+            IdMember.DataPropertyName = "IdMember";
+            IdMember.HeaderText = "IdMember";
+            IdMember.MinimumWidth = 6;
+            IdMember.Name = "IdMember";
+            IdMember.Width = 125;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 125;
+            dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            dataGridViewTextBoxColumn1.HeaderText = "Name";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 125;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Email";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Email";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
+            dataGridViewTextBoxColumn2.DataPropertyName = "Email";
+            dataGridViewTextBoxColumn2.HeaderText = "Email";
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 125;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "PhoneNumber";
-            this.dataGridViewTextBoxColumn3.HeaderText = "PhoneNumber";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 125;
+            dataGridViewTextBoxColumn3.DataPropertyName = "PhoneNumber";
+            dataGridViewTextBoxColumn3.HeaderText = "PhoneNumber";
+            dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Width = 125;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Address";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Address";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 125;
+            dataGridViewTextBoxColumn4.DataPropertyName = "Address";
+            dataGridViewTextBoxColumn4.HeaderText = "Address";
+            dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Width = 125;
             // 
             // dataGridViewTextBoxColumn5
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "DateOfBirth";
-            this.dataGridViewTextBoxColumn5.HeaderText = "DateOfBirth";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 125;
+            dataGridViewTextBoxColumn5.DataPropertyName = "DateOfBirth";
+            dataGridViewTextBoxColumn5.HeaderText = "DateOfBirth";
+            dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.Width = 125;
             // 
             // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Gender";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Gender";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 125;
+            dataGridViewTextBoxColumn6.DataPropertyName = "Gender";
+            dataGridViewTextBoxColumn6.HeaderText = "Gender";
+            dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.Width = 125;
+            // 
+            // CreatedAt
+            // 
+            CreatedAt.DataPropertyName = "CreatedAt";
+            CreatedAt.HeaderText = "CreatedAt";
+            CreatedAt.MinimumWidth = 6;
+            CreatedAt.Name = "CreatedAt";
+            CreatedAt.Width = 125;
+            // 
+            // LastUpdatedAt
+            // 
+            LastUpdatedAt.DataPropertyName = "LastUpdatedAt";
+            LastUpdatedAt.HeaderText = "LastUpdatedAt";
+            LastUpdatedAt.MinimumWidth = 6;
+            LastUpdatedAt.Name = "LastUpdatedAt";
+            LastUpdatedAt.Width = 125;
+            // 
+            // DeletedAt
+            // 
+            DeletedAt.DataPropertyName = "DeletedAt";
+            DeletedAt.HeaderText = "DeletedAt";
+            DeletedAt.MinimumWidth = 6;
+            DeletedAt.Name = "DeletedAt";
+            DeletedAt.Width = 125;
+            // 
+            // viewMasterMemberBindingSource2
+            // 
+            viewMasterMemberBindingSource2.DataSource = typeof(Model.ViewMasterMember);
+            // 
+            // memberBindingSource
+            // 
+            memberBindingSource.DataSource = typeof(Model.Member);
+            // 
+            // memberBindingSource3
+            // 
+            memberBindingSource3.DataSource = typeof(Model.Member);
+            // 
+            // viewMasterMemberBindingSource1
+            // 
+            viewMasterMemberBindingSource1.DataSource = typeof(Model.ViewMasterMember);
+            // 
+            // memberBindingSource2
+            // 
+            memberBindingSource2.DataSource = typeof(Model.Member);
+            // 
+            // memberBindingSource1
+            // 
+            memberBindingSource1.DataSource = typeof(Model.Member);
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(31, 276);
+            label2.Name = "label2";
+            label2.Size = new Size(49, 20);
+            label2.TabIndex = 2;
+            label2.Text = "Name";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(31, 310);
+            label3.Name = "label3";
+            label3.Size = new Size(127, 20);
+            label3.TabIndex = 3;
+            label3.Text = "Membership Type";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(31, 344);
+            label4.Name = "label4";
+            label4.Size = new Size(46, 20);
+            label4.TabIndex = 4;
+            label4.Text = "Email";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(31, 373);
+            label5.Name = "label5";
+            label5.Size = new Size(108, 20);
+            label5.TabIndex = 5;
+            label5.Text = "Phone Number";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(31, 403);
+            label6.Name = "label6";
+            label6.Size = new Size(62, 20);
+            label6.TabIndex = 6;
+            label6.Text = "Address";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(36, 520);
+            label7.Name = "label7";
+            label7.Size = new Size(57, 20);
+            label7.TabIndex = 7;
+            label7.Text = "Gender";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(36, 490);
+            label8.Name = "label8";
+            label8.Size = new Size(96, 20);
+            label8.TabIndex = 8;
+            label8.Text = "Date Of Birth";
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(193, 269);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(253, 27);
+            txtName.TabIndex = 9;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(193, 337);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(253, 27);
+            txtEmail.TabIndex = 11;
+            // 
+            // txtPhoneNum
+            // 
+            txtPhoneNum.Location = new Point(193, 370);
+            txtPhoneNum.Name = "txtPhoneNum";
+            txtPhoneNum.Size = new Size(253, 27);
+            txtPhoneNum.TabIndex = 12;
+            // 
+            // txtBirthDay
+            // 
+            txtBirthDay.Location = new Point(193, 483);
+            txtBirthDay.Name = "txtBirthDay";
+            txtBirthDay.Size = new Size(253, 27);
+            txtBirthDay.TabIndex = 13;
+            // 
+            // RTAddress
+            // 
+            RTAddress.Location = new Point(193, 403);
+            RTAddress.Name = "RTAddress";
+            RTAddress.Size = new Size(253, 65);
+            RTAddress.TabIndex = 15;
+            RTAddress.Text = "";
+            // 
+            // btnInsert
+            // 
+            btnInsert.Location = new Point(492, 306);
+            btnInsert.Name = "btnInsert";
+            btnInsert.Size = new Size(105, 42);
+            btnInsert.TabIndex = 16;
+            btnInsert.Text = "INSERT";
+            btnInsert.UseVisualStyleBackColor = true;
+            btnInsert.Click += btnInsert_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(492, 475);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(105, 42);
+            btnDelete.TabIndex = 17;
+            btnDelete.Text = "DELETE";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(631, 438);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(105, 42);
+            btnCancel.TabIndex = 18;
+            btnCancel.Text = "CANCEL";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSubmit
+            // 
+            btnSubmit.Location = new Point(631, 337);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(105, 42);
+            btnSubmit.TabIndex = 19;
+            btnSubmit.Text = "SUBMIT";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(492, 392);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(105, 42);
+            btnUpdate.TabIndex = 20;
+            btnUpdate.Text = "UPDATE";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // radMale
+            // 
+            radMale.AutoSize = true;
+            radMale.Location = new Point(193, 520);
+            radMale.Name = "radMale";
+            radMale.Size = new Size(63, 24);
+            radMale.TabIndex = 21;
+            radMale.TabStop = true;
+            radMale.Text = "Male";
+            radMale.UseVisualStyleBackColor = true;
+            // 
+            // radFemale
+            // 
+            radFemale.AutoSize = true;
+            radFemale.Location = new Point(329, 518);
+            radFemale.Name = "radFemale";
+            radFemale.Size = new Size(78, 24);
+            radFemale.TabIndex = 22;
+            radFemale.TabStop = true;
+            radFemale.Text = "Female";
+            radFemale.UseVisualStyleBackColor = true;
+            // 
+            // cmbMemberType
+            // 
+            cmbMemberType.FormattingEnabled = true;
+            cmbMemberType.Location = new Point(193, 302);
+            cmbMemberType.Name = "cmbMemberType";
+            cmbMemberType.Size = new Size(253, 28);
+            cmbMemberType.TabIndex = 23;
+            // 
+            // lblModifed
+            // 
+            lblModifed.AutoSize = true;
+            lblModifed.Location = new Point(440, 538);
+            lblModifed.Name = "lblModifed";
+            lblModifed.Size = new Size(0, 20);
+            lblModifed.TabIndex = 24;
             // 
             // MasterMember
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 567);
-            this.Controls.Add(this.cmbMemberType);
-            this.Controls.Add(this.radFemale);
-            this.Controls.Add(this.radMale);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.RTAddress);
-            this.Controls.Add(this.txtBirthDay);
-            this.Controls.Add(this.txtPhoneNum);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
-            this.Name = "MasterMember";
-            this.Text = "MasterMember";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewMasterMemberBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 567);
+            Controls.Add(lblModifed);
+            Controls.Add(cmbMemberType);
+            Controls.Add(radFemale);
+            Controls.Add(radMale);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnSubmit);
+            Controls.Add(btnCancel);
+            Controls.Add(btnDelete);
+            Controls.Add(btnInsert);
+            Controls.Add(RTAddress);
+            Controls.Add(txtBirthDay);
+            Controls.Add(txtPhoneNum);
+            Controls.Add(txtEmail);
+            Controls.Add(txtName);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(dataGridView1);
+            Controls.Add(label1);
+            Name = "MasterMember";
+            Text = "MasterMember";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)viewMasterMemberBindingSource2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)viewMasterMemberBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)viewMasterMemberBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -476,5 +503,9 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn CreatedAt;
+        private DataGridViewTextBoxColumn LastUpdatedAt;
+        private DataGridViewTextBoxColumn DeletedAt;
+        private Label lblModifed;
     }
 }

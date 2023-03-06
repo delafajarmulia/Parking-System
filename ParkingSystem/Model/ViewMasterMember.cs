@@ -19,6 +19,9 @@ namespace ParkingSystem.Model
         public string Gender { get; set; } 
         //public string Type { get; set; }
         public string MembershipName { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? LastUpdatedAt { get; set; }
+        public DateTime? DeletedAt { get; set; }
 
     }
 }

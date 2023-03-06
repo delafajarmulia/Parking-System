@@ -17,5 +17,8 @@ namespace ParkingSystem.Model
         public string LicensePlate { get; set; }
         public string Notes { get; set; }
         public int IdMember { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? LastUpdatedAt { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

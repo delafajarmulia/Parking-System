@@ -18,7 +18,7 @@ namespace ParkingSystem
         private string plate;
         private int duration;
         private int pay;
-        private int employeeId, memId, vehId, memTypeId, vehTypeId;
+        private int employeeId, memId, vehId, memTypeId, vehTypeIdCek;
 
         public Payment()
         {
@@ -112,13 +112,15 @@ namespace ParkingSystem
                 // get vehicle id
                 vehId = vehicle.Id;
 
+                // get vehicle type id
+                vehTypeIdCek = vehicle.VehicleTypeId;
+
                 // get vehicle type
                 _context.VehicleTypes.Load();
                 VehicleType? vehType = await _context.VehicleTypes
-                                        .Where(v => v.Id == vehId)
+                                        .Where(v => v.Id == vehTypeIdCek)
                                         .FirstOrDefaultAsync();
                 string vehTypeName = vehType.Name;
-                vehTypeId = vehType.Id;
 
                 // get member id
                 _context.Members.Load();
@@ -127,11 +129,11 @@ namespace ParkingSystem
                                     .FirstOrDefaultAsync();
 
                 // get membership type
-                _context.MemberShipTypes.Load();
-                MembershipType? memType = await _context.MemberShipTypes
+                _context.Members.Load();
+                Member? memType = await _context.Members
                                             .Where(m => m.Id == memId)
                                             .FirstOrDefaultAsync();
-                memTypeId = memType.Id;
+                memTypeId = memType.Id; 
 
                 if (memId != null)
                 {
@@ -172,7 +174,7 @@ namespace ParkingSystem
             {
                 HourlyRate hourlyRate = new HourlyRate();
                 hourlyRate.MembershipId = memTypeId;
-                hourlyRate.VehicleTypeId = vehTypeId;
+                hourlyRate.VehicleTypeId = vehTypeIdCek;
 
                 _context.HourlyRates.Add(hourlyRate);
                 await _context.SaveChangesAsync();
@@ -188,10 +190,12 @@ namespace ParkingSystem
 
                 _context.ParkingData.Add(data);
                 await _context.SaveChangesAsync();
+
+                MessageBox.Show("Successfully add new vehicle data parking with ID parking data : " + data.Id + " and ID hourly rate : " + hourlyRate.Id, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else
             {
                 HourlyRate hourlyRate = new HourlyRate();
-                hourlyRate.VehicleTypeId = vehTypeId;
+                hourlyRate.VehicleTypeId = vehTypeIdCek;
 
                 ParkingData data = new ParkingData();
                 data.LicensePlate = plate;
@@ -205,6 +209,8 @@ namespace ParkingSystem
                 await _context.SaveChangesAsync();
                 _context.ParkingData.Add(data);
                 await _context.SaveChangesAsync();
+
+                MessageBox.Show("Successfully add new vehicle data parking with ID parking data : " + data.Id + "and ID hourly rate : " + hourlyRate.Id, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
