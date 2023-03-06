@@ -24,6 +24,7 @@ namespace ParkingSystem
         private string? operation;
         private string? ownerName;
         private int? memIdSearch;
+        private string? type;
 
         public MasterVehicle()
         {
@@ -156,6 +157,15 @@ namespace ParkingSystem
             txtLicensePlate.Enabled = true;
         }
 
+        private void SelectVehicleType()
+        {
+            _context.VehicleTypes.Load();
+            var data = _context.VehicleTypes.Local.ToList();
+            cmbVehicleType.DisplayMember = "Name";
+            cmbVehicleType.ValueMember = "Id";
+            cmbVehicleType.DataSource = data;
+        }
+
         private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
@@ -168,6 +178,7 @@ namespace ParkingSystem
             RTNote.Text = row.Cells[6].Value.ToString();
             ownerName = row.Cells[4].Value.ToString();
             cmbVehicleType.Text = row.Cells[2].Value.ToString();
+            type = row.Cells[2].Value.ToString();
 
             var created = row.Cells[7].Value;
             var updated = row.Cells[8].Value;
@@ -196,13 +207,9 @@ namespace ParkingSystem
             EnabledTrue();
 
             txtOwner.Text = "";
-            _context.VehicleTypes.Load();
-            var data = _context.VehicleTypes.Local.ToList();
-            cmbVehicleType.DisplayMember = "Name";
-            cmbVehicleType.ValueMember = "Id";
-            cmbVehicleType.DataSource = data;
             RTNote.Text = "";
             txtLicensePlate.Text = "";
+            SelectVehicleType();
 
             operation = "Insert";
         }
@@ -213,11 +220,8 @@ namespace ParkingSystem
 
             txtOwner.Text = ownerName;
 
-            _context.VehicleTypes.Load();
-            var data = _context.VehicleTypes.Local.ToList();
-            cmbVehicleType.DisplayMember = "Name";
-            cmbVehicleType.ValueMember = "Id";
-            cmbVehicleType.DataSource = data;
+            SelectVehicleType();
+            cmbVehicleType.Text = type;
 
             operation = "Update";
         }
@@ -231,13 +235,9 @@ namespace ParkingSystem
             EnabledTrue();
 
             txtOwner.Text = "";
-            _context.VehicleTypes.Load();
-            var data = _context.VehicleTypes.Local.ToList();
-            cmbVehicleType.DisplayMember = "Name";
-            cmbVehicleType.ValueMember = "Id";
-            cmbVehicleType.DataSource = data;
             RTNote.Text = "";
             txtLicensePlate.Text = "";
+            SelectVehicleType();
 
             operation = null;
         }

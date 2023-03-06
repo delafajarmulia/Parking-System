@@ -86,14 +86,14 @@
             cmbSeacrh.FormattingEnabled = true;
             cmbSeacrh.Location = new Point(115, 72);
             cmbSeacrh.Name = "cmbSeacrh";
-            cmbSeacrh.Size = new Size(90, 28);
+            cmbSeacrh.Size = new Size(136, 28);
             cmbSeacrh.TabIndex = 2;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(220, 73);
+            txtSearch.Location = new Point(257, 73);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(240, 27);
+            txtSearch.Size = new Size(203, 27);
             txtSearch.TabIndex = 3;
             txtSearch.Click += Search;
             txtSearch.Leave += txtSearch_LeaveFocus;
